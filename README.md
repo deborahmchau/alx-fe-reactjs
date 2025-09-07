@@ -6,7 +6,7 @@ This project includes;
 - Creating my first React App
 - Modifying JSX in a Pre-built React Component
 - Creating Specific Components in a React Application
-- Creatong a User Profile Card Using Props
+- Creating a User Profile Card Using Props
 
 ## Author
 Deborah Mchau
