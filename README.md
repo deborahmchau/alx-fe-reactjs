@@ -7,6 +7,10 @@ This project includes;
 - Modifying JSX in a Pre-built React Component
 - Creating Specific Components in a React Application
 - Creating a User Profile Card Using Props
+- Stlying React Components
+- Creating simple Counter Application using State and Hooks
+- Creating a multi-page React Application using React Router
+- Refactor Prop Drilling to Use Context API
 
 ## Author
 Deborah Mchau
