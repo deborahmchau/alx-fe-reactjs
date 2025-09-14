@@ -32,6 +32,12 @@ export default function App() {
         </Routes>
       </main>
     </div>
+    <div style={{ maxWidth: "600px", margin: "auto", padding: "20px" }}>
+      <h1>Recipe Sharing App</h1>
+      <SearchBar />
+      <AddRecipeForm />
+      <RecipeList />
+    </div>
   );
 }
 export default App 

@@ -1,27 +1,41 @@
-// src/stores/recipeStore.js
-import create from 'zustand';
-import { persist } from 'zustand/middleware';
+import { create } from "zustand";
 
-// simple id helper
-const uid = () => Date.now().toString();
+const useRecipeStore = create((set) => ({
+  recipes: [],
+  searchTerm: "",
+  filteredRecipes: [],
 
-const useRecipeStore = create(persist(
-  (set) => ({
-    recipes: [
-      // optional seed example; remove or keep
-      { id: uid(), title: 'Spaghetti Aglio e Olio', description: 'Garlic, olive oil, chili, spaghetti.' },
-      { id: uid(), title: 'Tomato Soup', description: 'Simple tomato soup with basil.' }
-    ],
-    addRecipe: (newRecipe) => set((state) => ({ recipes: [...state.recipes, newRecipe] })),
-    updateRecipe: (id, updatedFields) => set((state) => ({
-      recipes: state.recipes.map(r => r.id === id ? { ...r, ...updatedFields } : r)
+  addRecipe: (newRecipe) =>
+    set((state) => ({
+      recipes: [...state.recipes, newRecipe],
+      filteredRecipes: [...state.recipes, newRecipe].filter((r) =>
+        r.title.toLowerCase().includes(state.searchTerm.toLowerCase())
+      ),
     })),
-    deleteRecipe: (id) => set((state) => ({ recipes: state.recipes.filter(r => r.id !== id) })),
-    setRecipes: (recipes) => set({ recipes })
-  }),
-  {
-    name: 'recipe-storage', // localStorage key
-  }
-));
+
+  deleteRecipe: (id) =>
+    set((state) => ({
+      recipes: state.recipes.filter((r) => r.id !== id),
+      filteredRecipes: state.filteredRecipes.filter((r) => r.id !== id),
+    })),
+
+  updateRecipe: (updatedRecipe) =>
+    set((state) => ({
+      recipes: state.recipes.map((r) =>
+        r.id === updatedRecipe.id ? updatedRecipe : r
+      ),
+      filteredRecipes: state.recipes.map((r) =>
+        r.id === updatedRecipe.id ? updatedRecipe : r
+      ),
+    })),
+
+  setSearchTerm: (term) =>
+    set((state) => ({
+      searchTerm: term,
+      filteredRecipes: state.recipes.filter((recipe) =>
+        recipe.title.toLowerCase().includes(term.toLowerCase())
+      ),
+    })),
+}));
 
 export default useRecipeStore;
