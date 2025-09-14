@@ -20,8 +20,8 @@ export default function EditRecipeForm() {
 
   if (!recipe) return <p>Recipe not found.</p>;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
     updateRecipe(id, { title: title.trim(), description: description.trim() });
     navigate(`/recipes/${id}`);
   };
