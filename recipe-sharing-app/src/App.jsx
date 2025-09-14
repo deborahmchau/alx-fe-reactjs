@@ -5,8 +5,11 @@ import RecipeList from './components/RecipeList';
 import AddRecipeForm from './components/AddRecipeForm';
 import RecipeDetails from './components/RecipeDetails';
 import EditRecipeForm from './components/EditRecipeForm';
+import SearchBar from "./components/SearchBar";
+import FavoritesList from "./components/FavoritesList";
+import RecommendationsList from "./components/RecommendationsList";
 
-export default function App() {
+function App() {
   return (
     <div style={{ padding: 20, maxWidth: 900, margin: '0 auto' }}>
       <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -37,6 +40,10 @@ export default function App() {
       <SearchBar />
       <AddRecipeForm />
       <RecipeList />
+      <hr />
+      <FavoritesList />
+      <hr />
+      <RecommendationsList />
     </div>
   );
 }
