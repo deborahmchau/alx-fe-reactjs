@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { persist } from 'zustand/middleware';
 
 const useRecipeStore = create((set) => ({
   recipes: [],
@@ -15,6 +16,8 @@ const useRecipeStore = create((set) => ({
       recipes: state.recipes.filter((r) => r.id !== id),
       favorites: state.favorites.filter((fid) => fid !== id), // remove from favorites if deleted
     })),
+  
+  setRecipes: (recipes) => set({ recipes })
 
   updateRecipe: (updatedRecipe) =>
     set((state) => ({
