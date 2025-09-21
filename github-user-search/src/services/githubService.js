@@ -7,7 +7,7 @@ const api = axios.create({
     },
 });
 
-export const searchUsers = async (username) => {
+export const fetchUserData = async (username) => {
     try {
     const response = await axios.get('${BASE_URL}/users/${username}',{headers,});
         return response.data;
