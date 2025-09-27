@@ -10,8 +10,8 @@ function Search() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     setLoading(true);
     setError("");
     setUsers([]);
@@ -32,21 +32,21 @@ function Search() {
         <input
           type="text"
           value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={(event) => setUsername(event.target.value)}
           placeholder="Enter GitHub username"
           className="w-full p-2 border rounded"
         />
         <input
           type="text"
           value={location}
-          onChange={(e) => setLocation(e.target.value)}
+          onChange={(event) => setLocation(event.target.value)}
           placeholder="Enter location (optional)"
           className="w-full p-2 border rounded"
         />
         <input
           type="number"
           value={minRepos}
-          onChange={(e) => setMinRepos(e.target.value)}
+          onChange={(event) => setMinRepos(event.target.value)}
           placeholder="Min repositories (optional)"
           className="w-full p-2 border rounded"
         />
