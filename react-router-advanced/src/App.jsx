@@ -5,6 +5,7 @@ import Profile from "./components/Profile";
 import Post from "./components/Post";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthProvider } from "./context/AuthContext";
+import BlogPost from "./components/BlogPost";
 
 function App() {
   return (
@@ -17,15 +18,14 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route
-            path="/profile/*"
-            element={
+          <Route path="/profile/*" element={
               <ProtectedRoute>
                 <Profile />
               </ProtectedRoute>
             }
           />
           <Route path="/post/:postId" element={<Post />} />
+          <Route path="/blog/:id" element={<BlogPost />} />
         </Routes>
       </Router>
     </AuthProvider>
