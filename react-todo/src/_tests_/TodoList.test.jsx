@@ -20,6 +20,19 @@ describe("TodoList", () => {
     expect(screen.getByText("Write tests")).toBeInTheDocument();
   });
 
+  test("renders initial demo todos", () => {
+  render(<TodoList />);
+  expect(screen.getByText("Learn React")).toBeInTheDocument();
+  expect(screen.getByText("Build a Todo App")).toBeInTheDocument();
+});
+
+  test("toggles a todo as completed when clicked", () => {
+  render(<TodoList />);
+  const todoItem = screen.getByText("Learn React");
+  fireEvent.click(todoItem);
+  expect(todoItem).toHaveStyle("text-decoration: line-through");
+});
+
   test("deletes a todo when delete button clicked", () => {
     render(<TodoList />);
 
